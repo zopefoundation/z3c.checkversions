@@ -68,12 +68,12 @@ Check the highest versions available::
     $ checkversions buildout.cfg
     foobar=2.3.5
 
-Check the highest intermediate upgrades available
+Check the highest intermediate upgrades available::
 
     $ checkversions -l 1 buildout.cfg
     foobar=1.4.2
 
-Check the highest minor upgrades available
+Check the highest minor upgrades available::
 
     $ checkversions -l 2 buildout.cfg
     foobar=1.0.5
