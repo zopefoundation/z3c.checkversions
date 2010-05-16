@@ -1,0 +1,16 @@
+Checking installed versions
+---------------------------
+
+>>> from z3c.checkversions import installed
+>>> checker = installed.Checker()
+
+We just check we can get the versions:
+
+>>> from pprint import pprint
+>>> versions = checker.get_versions()
+Checking your installed distributions
+>>> 'z3c.checkversions' in versions
+True
+
+Checking for upgrades availability is already done in buildout.txt
+

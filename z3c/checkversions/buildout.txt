@@ -1,0 +1,78 @@
+Checking versions of a buildout
+-------------------------------
+
+For the tests, we use two fake local indices
+
+>>> import z3c.checkversions
+>>> from os.path import dirname, sep
+>>> testindex = 'file://' + dirname(z3c.checkversions.__file__).replace(sep, '/') + '/testindex'
+>>> testindex2 = 'file://' + dirname(z3c.checkversions.__file__).replace(sep, '/') + '/testindex2'
+>>> print testindex
+file:///.../testindex
+
+We create a buildout with a versions section and a custom index:
+
+>>> import os
+>>> from tempfile import mkstemp
+>>> buildout_fd, buildout_path = mkstemp()
+>>> buildout_file = os.fdopen(buildout_fd, 'w')
+>>> buildout_file.write("""
+... [buildout]
+... index = %s
+... versions = versions
+... [versions]
+... zope.interface = 3.4.0
+... zope.component = 3.4.0
+... """ % testindex)
+>>> buildout_file.close()
+
+We can now check the new highest versions:
+
+>>> from z3c.checkversions import buildout
+>>> checker = buildout.Checker(filename=buildout_path)
+>>> checker.get_versions()
+Checking buildout file ...
+{'zope.interface': '3.4.0', 'zope.component': '3.4.0'}
+>>> checker.check()
+Checking buildout file ...
+Reading file:///.../zope.interface/
+zope.interface=3.6.1
+Reading file:///.../zope.component/
+zope.component=3.9.4
+
+We can check only the minor versions:
+
+>>> checker.check(level=2)
+Checking buildout file ...
+zope.interface=3.4.1
+
+We can provide a different index url:
+
+>>> checker = buildout.Checker(filename=buildout_path, index_url=testindex2)
+>>> checker.check()
+Checking buildout file ...
+Reading file:///.../zope.interface/
+zope.interface=3.6.2
+Reading file:///.../zope.component/
+zope.component=3.9.3
+
+console script
+--------------
+
+the 'main' module is exposed through a console_script entry point.
+We are using it directly here:
+
+>>> import sys
+>>> from z3c.checkversions import main
+>>> from subprocess import Popen, PIPE
+>>> p = Popen([sys.executable, main.__file__, '-h'],
+...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
+>>> print p.stdout.read()
+Usage: ... [options]
+...
+
+
+Clean the tmp file:
+
+>>> os.remove(buildout_path)
+
