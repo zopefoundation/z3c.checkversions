@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1dev'
+version = '0.1'
 
 setup(name='z3c.checkversions',
       version=version,
@@ -11,7 +11,7 @@ setup(name='z3c.checkversions',
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
        "Programming Language :: Python",
-       'Development Status :: 3 - Alpha',
+       'Development Status :: 4 - Beta',
        'Environment :: Console',
        'Intended Audience :: Developers',
        'License :: OSI Approved :: Zope Public License',
@@ -37,7 +37,7 @@ setup(name='z3c.checkversions',
           # -*- Extra requirements: -*-
       ],
       extras_require={'buildout': ['zc.buildout']},
-      tests_require=['zc.buildout', 'virtualenv'],
+      tests_require=['zc.buildout'],
       test_suite='z3c.checkversions.test.test',
       entry_points="""
       # -*- Entry points: -*-
