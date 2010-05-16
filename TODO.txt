@@ -1,0 +1,7 @@
+todo list
+=========
+
+- generate an updated versions.cfg for a buildout
+- have a default verbose option which prints current versions as well
+- make several network connection at once for faster detection
+- handle network timeouts (abort at the end ?)
