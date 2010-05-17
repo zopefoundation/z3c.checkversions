@@ -4,7 +4,8 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- ...
+- added a verbose option to print old versions as well
+- updated metadata, doc and license
 
 0.1 (2010-05-16)
 ----------------

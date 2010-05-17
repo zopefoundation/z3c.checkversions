@@ -37,6 +37,11 @@ def main():
                       dest='index',
                       help=u"Alternative package index URL")
 
+    parser.add_option('-v', '--verbose',
+                      dest='verbose',
+                      action='store_true',
+                      default=False,
+                      help=u"Verbose mode (prints old versions too)")
     options, args = parser.parse_args()
 
     if len(args) > 1:
@@ -52,10 +57,12 @@ def main():
 
     if buildoutcfg:
         import buildout
-        checker = buildout.Checker(filename=buildoutcfg, **kw)
+        checker = buildout.Checker(filename=buildoutcfg,
+                                   verbose=options.verbose,
+                                   **kw)
     else:
         import installed
-        checker = installed.Checker()
+        checker = installed.Checker(verbose=options.verbose)
 
     checker.check(level=options.level)
 
