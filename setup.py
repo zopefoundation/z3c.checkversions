@@ -21,7 +21,7 @@ setup(name='z3c.checkversions',
       version=version,
       description="Find newer package versions on PyPI",
       long_description=open("README.txt").read() + "\n" +
-                       open("HISTORY.txt").read(),
+                       open("CHANGELOG.txt").read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
        "Programming Language :: Python",

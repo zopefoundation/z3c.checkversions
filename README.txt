@@ -29,53 +29,60 @@ or in a buildout::
     recipe=zc.recipe.egg
     eggs=z3c.checkversions
 
+
 Usage
 =====
+
+::
+
+    $ checkversions -h
+    Usage: checkversions [options]
+    
+    This script will check new package versions of either your current installed
+    distributions or a buildout file if provided. It can detect major or minor
+    versions availability: level 0 gets the highest version (X.y.z), level 1 gets
+    the highest intermediate version (x.Y.z), level 2 gets the highest minor
+    version (x.y.Z).  Using level 2, you can automatically retrieve all bugfix
+    versions of a buildout.
+    
+    Options:
+      -h, --help            show this help message and exit
+      -l LEVEL, --level=LEVEL
+                            Version level to check
+      -i INDEX, --index=INDEX
+                            Alternative package index URL
+      -v, --verbose         Verbose mode (prints old versions too)
+
+
+Examples
+========
 
 For installed packages
 ----------------------
 
-Imagine `foobar` 1.0.1 is installed in your system
+Example with a virtualenv::
 
-Check the highest versions available::
-
-    $ checkversions
-    foobar=2.3.5
-
-Check the highest intermediate upgrades available::
-
-    $ checkversions -l 1
-    foobar=1.4.2
-
-Check the highest minor upgrades available::
-
-    $ checkversions -l 2
-    foobar=1.0.5
+    $ virtualenv --no-site-packages sandbox
+    $ sandbox/bin/pip install z3c.checkversions
+    $ sandbox/bin/checkversions -v -l 1
+    # Checking your installed distributions
+    pip=0.7.1 # was: 0.6.3
 
 For a buildout
 --------------
 
-The usage is the same, you just have to specify the buildout file to scan.
-The buildout does not need to be built.
+It can work either with a full buildout.cfg or with a simple versions.cfg file.
 
-Imagine you have a buildout.cfg with::
+Here is a sample `versions.cfg` file::
 
     [versions]
-    foobar=1.0.0
+    pip=0.6.3
 
-Check the highest versions available::
+You can create a new versions.cfg with the output ::
 
-    $ checkversions buildout.cfg
-    foobar=2.3.5
+    $ checkversions -v -l 1 versions.cfg
+    # Checking your installed distributions
+    pip=0.7.1 # was: 0.6.3
 
-Check the highest intermediate upgrades available::
-
-    $ checkversions -l 1 buildout.cfg
-    foobar=1.4.2
-
-Check the highest minor upgrades available::
-
-    $ checkversions -l 2 buildout.cfg
-    foobar=1.0.5
 
 
