@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2 (unreleased)
+0.2 (2010-05-22)
 ----------------
 
 - added a verbose option to print old versions as well
