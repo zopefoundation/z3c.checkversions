@@ -81,7 +81,7 @@ Here is a sample `versions.cfg` file::
 You can create a new versions.cfg with the output ::
 
     $ checkversions -v -l 1 versions.cfg
-    # Checking your installed distributions
+    # Checking buildout file versions.cfg
     pip=0.7.1 # was: 0.6.3
 
 
