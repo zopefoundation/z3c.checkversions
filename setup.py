@@ -1,17 +1,31 @@
+##############################################################################
+#
+# Copyright (c) 2010 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+
 from setuptools import setup, find_packages
 import os
 
-version = '0.1dev'
+version = '0.2'
 
 setup(name='z3c.checkversions',
       version=version,
-      description="Checks package versions",
+      description="Find newer package versions on PyPI",
       long_description=open("README.txt").read() + "\n" +
-                       open("HISTORY.txt").read(),
+                       open("CHANGELOG.txt").read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
        "Programming Language :: Python",
-       'Development Status :: 3 - Alpha',
+       'Development Status :: 4 - Beta',
        'Environment :: Console',
        'Intended Audience :: Developers',
        'License :: OSI Approved :: Zope Public License',
@@ -37,7 +51,7 @@ setup(name='z3c.checkversions',
           # -*- Extra requirements: -*-
       ],
       extras_require={'buildout': ['zc.buildout']},
-      tests_require=['zc.buildout', 'virtualenv'],
+      tests_require=['zc.buildout'],
       test_suite='z3c.checkversions.test.test',
       entry_points="""
       # -*- Entry points: -*-

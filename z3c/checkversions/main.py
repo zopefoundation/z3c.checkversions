@@ -1,3 +1,16 @@
+##############################################################################
+#
+# Copyright (c) 2010 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
 """This script will check new package versions of either
 your current installed distributions or a buildout file if provided.
 It can detect major or minor versions availability:
@@ -24,6 +37,11 @@ def main():
                       dest='index',
                       help=u"Alternative package index URL")
 
+    parser.add_option('-v', '--verbose',
+                      dest='verbose',
+                      action='store_true',
+                      default=False,
+                      help=u"Verbose mode (prints old versions too)")
     options, args = parser.parse_args()
 
     if len(args) > 1:
@@ -39,10 +57,12 @@ def main():
 
     if buildoutcfg:
         import buildout
-        checker = buildout.Checker(filename=buildoutcfg, **kw)
+        checker = buildout.Checker(filename=buildoutcfg,
+                                   verbose=options.verbose,
+                                   **kw)
     else:
         import installed
-        checker = installed.Checker()
+        checker = installed.Checker(verbose=options.verbose)
 
     checker.check(level=options.level)
 

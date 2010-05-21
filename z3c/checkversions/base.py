@@ -1,3 +1,17 @@
+##############################################################################
+#
+# Copyright (c) 2010 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+
 from pkg_resources import parse_version, Requirement
 from setuptools import package_index
 
@@ -5,8 +19,9 @@ class Checker(object):
     """Base class for version checkers
     """
     __custom_url = False
-    def __init__(self, filename=None, index_url=None):
+    def __init__(self, filename=None, index_url=None, verbose=False):
         self.filename = filename
+        self.verbose = verbose
         self.pi = package_index.PackageIndex()
         self._set_index_url(index_url)
         if index_url is not None:
@@ -47,10 +62,18 @@ class Checker(object):
                 new_dist = dist
                 break
 
-
             if new_dist and new_dist.parsed_version > parsed_version:
-                print("%s=%s" % (name, new_dist.version))
+                if self.verbose:
+                    print("%s=%s # was: %s" % (name, new_dist.version, version))
+                else:
+                    print("%s=%s" % (name, new_dist.version))
+            elif self.verbose:
+                print("%s=%s" % (name, version))
 
 
     def get_versions(self):
+        """Get a dict {'name': 'version', ...} with package versions to check.
+        This should be implemented by derived classes
+        """
         raise NotImplementedError
+
