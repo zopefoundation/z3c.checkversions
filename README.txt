@@ -27,8 +27,10 @@ or in a buildout::
     
     [checkversions]
     recipe=zc.recipe.egg
-    eggs=z3c.checkversions
+    eggs=z3c.checkversions [buildout]
 
+Note that buildout support is optional and must be enabled with [buildout] so
+that zc.buildout is installed as well.
 
 Usage
 =====
