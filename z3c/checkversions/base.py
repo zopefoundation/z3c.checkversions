@@ -64,11 +64,12 @@ class Checker(object):
 
             if new_dist and new_dist.parsed_version > parsed_version:
                 if self.verbose:
-                    print("%s=%s # was: %s" % (name, new_dist.version, version))
+                    print("%s=%s # was: %s"
+                          % (name, new_dist.version, version.split()[0]))
                 else:
                     print("%s=%s" % (name, new_dist.version))
             elif self.verbose:
-                print("%s=%s" % (name, version))
+                print("%s=%s" % (name, version.split()[0]))
 
 
     def get_versions(self):

@@ -25,7 +25,8 @@ from optparse import OptionParser
 
 def main():
 
-    parser = OptionParser(description=__doc__)
+    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [buildout_file]"
+    parser = OptionParser(description=__doc__, usage=usage)
 
     parser.add_option('-l', '--level',
                       type='int',

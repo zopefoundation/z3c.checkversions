@@ -4,7 +4,7 @@ Changelog
 0.3 (unreleased)
 ----------------
 
-- ...
+- don't accumulate old comments
 
 0.2 (2010-05-22)
 ----------------

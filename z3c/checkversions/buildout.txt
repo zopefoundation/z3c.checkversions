@@ -66,6 +66,28 @@ zope.interface=3.4.1 # was: 3.4.0
 Reading file:///.../zope.component/
 zope.component=3.4.0
 
+The old comments are removed:
+
+>>> buildout_fd, buildout_path = mkstemp()
+>>> buildout_file = os.fdopen(buildout_fd, 'w')
+>>> buildout_file.write("""
+... [buildout]
+... index = %s
+... versions = versions
+... [versions]
+... zope.interface = 3.4.1 # was: 3.4.0
+... zope.component = 3.4.0
+... """ % testindex)
+>>> buildout_file.close()
+
+>>> checker = buildout.Checker(filename=buildout_path, verbose=True)
+>>> checker.check()
+# Checking buildout file ...
+Reading file:///.../zope.interface/
+zope.interface=3.6.1 # was: 3.4.1
+Reading file:///.../zope.component/
+zope.component=3.9.4 # was: 3.4.0
+
 
 
 console script
@@ -80,7 +102,7 @@ We are using it directly here:
 >>> p = Popen([sys.executable, main.__file__, '-h'],
 ...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
 >>> print p.stdout.read()
-Usage: ... [options]
+Usage: ...
 ...
 
 
