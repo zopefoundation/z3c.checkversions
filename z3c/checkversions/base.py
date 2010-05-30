@@ -19,8 +19,7 @@ class Checker(object):
     """Base class for version checkers
     """
     __custom_url = False
-    def __init__(self, filename=None, index_url=None, verbose=False):
-        self.filename = filename
+    def __init__(self, index_url=None, verbose=False):
         self.verbose = verbose
         self.pi = package_index.PackageIndex()
         self._set_index_url(index_url)

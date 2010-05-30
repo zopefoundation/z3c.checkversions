@@ -19,6 +19,10 @@ from z3c.checkversions import base
 class Checker(base.Checker):
     """checker class for a buildout
     """
+    def __init__(self, *args, **kw):
+        self.filename = kw.pop('filename')
+        super(Checker, self).__init__(*args, **kw)
+
     def get_versions(self):
         buildout = Buildout(self.filename, '')
 
