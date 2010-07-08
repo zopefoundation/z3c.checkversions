@@ -5,6 +5,7 @@ Changelog
 ----------------
 
 - don't accumulate old comments
+- prefer final versions
 
 0.2 (2010-05-22)
 ----------------

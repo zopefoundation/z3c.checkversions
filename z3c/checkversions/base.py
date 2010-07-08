@@ -15,6 +15,20 @@
 from pkg_resources import parse_version, Requirement
 from setuptools import package_index
 
+
+_final_parts = '*final-', '*final'
+def _final_version(parsed_version):
+    """Function copied from zc.buildout.easy_install._final_version
+
+    >>> 1+1
+    >>>
+    """
+    for part in parsed_version:
+        if (part[:1] == '*') and (part not in _final_parts):
+            return False
+    return True
+
+
 class Checker(object):
     """Base class for version checkers
     """
@@ -53,9 +67,12 @@ class Checker(object):
             req = Requirement.parse(name)
             self.pi.find_packages(req)
             new_dist = None
-            # loop all versions until we find the first newer version
+            # loop all index versions until we find the 1st newer version
             # that keeps the major versions (below level)
+            # and is a final version
             for dist in self.pi[req.key]:
+                if not _final_version(dist.parsed_version):
+                    continue
                 if dist.parsed_version[:level] > parsed_version[:level]:
                     continue
                 new_dist = dist
