@@ -6,7 +6,6 @@ Checking installed versions
 
 We just check we can get the versions:
 
->>> from pprint import pprint
 >>> versions = checker.get_versions()
 # Checking your installed distributions
 >>> 'z3c.checkversions' in versions
