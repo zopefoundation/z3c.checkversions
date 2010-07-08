@@ -19,9 +19,6 @@ from setuptools import package_index
 _final_parts = '*final-', '*final'
 def _final_version(parsed_version):
     """Function copied from zc.buildout.easy_install._final_version
-
-    >>> 1+1
-    >>>
     """
     for part in parsed_version:
         if (part[:1] == '*') and (part not in _final_parts):
