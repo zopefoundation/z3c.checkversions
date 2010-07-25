@@ -60,7 +60,6 @@ Usage
       -v, --verbose         Verbose mode (prints old versions too)
 
 
-
 Examples
 ========
 
@@ -106,7 +105,7 @@ Then these versions won't be suggested::
     somepackage=0.6.0 # was: 0.5.0
     otherpackage=0.1.2 # was: 0.1.1
 
-If you enable the incremental option, only one upgrade will be suggested::
+If you enable the `--incremental` option, only one upgrade will be suggested::
 
     $ checkversions --incremental -v -l 1 versions.cfg
     # Checking buildout file versions.cfg
