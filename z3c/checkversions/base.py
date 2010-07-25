@@ -28,10 +28,23 @@ def _final_version(parsed_version):
 
 class Checker(object):
     """Base class for version checkers
+
+    attributes:
+
+    index_url: url of an alternative package index
+    verbose: display every version, not only new ones,
+             and display the previous version as a comment
+    blacklist: filename of the blacklist
+    incremental: suggest only one package upgrade
     """
     __custom_url = False
-    def __init__(self, index_url=None, verbose=False, blacklist=None):
+    def __init__(self,
+                 index_url=None,
+                 verbose=False,
+                 blacklist=None,
+                 incremental=False):
         self.verbose = verbose
+        self.incremental = incremental
         if blacklist:
             # create a set of tuples with bad versions
             self.blacklist = set([tuple(map(lambda x: x.strip(), line.split('=')))
@@ -66,6 +79,10 @@ class Checker(object):
         versions = self.get_versions()
 
         for name, version in versions.items():
+            if self.incremental == 'stop':
+                # skip subsequent scans
+                print("%s=%s" % (name, version))
+                continue
             parsed_version = parse_version(version)
             req = Requirement.parse(name)
             self.pi.find_packages(req)
@@ -75,6 +92,8 @@ class Checker(object):
             # and is a final version
             # and is not in the blacklist
             for dist in self.pi[req.key]:
+                if self.incremental == 'stop':
+                    continue
                 if (dist.project_name, dist.version) in self.blacklist:
                     continue
                 if not _final_version(dist.parsed_version):
@@ -85,6 +104,8 @@ class Checker(object):
                 break
 
             if new_dist and new_dist.parsed_version > parsed_version:
+                if self.incremental == True:
+                    self.incremental = 'stop'
                 if self.verbose:
                     print("%s=%s # was: %s"
                           % (name, new_dist.version, version.split()[0]))

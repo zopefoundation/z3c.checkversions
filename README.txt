@@ -56,7 +56,9 @@ Usage
                             Provide and alternative package index URL
       -b BLACKLIST, --blacklist=BLACKLIST
                             Provide a blacklist file with bad versions
+      -1, --incremental     Suggest only one upgrade. Skip others.
       -v, --verbose         Verbose mode (prints old versions too)
+
 
 
 Examples
@@ -82,12 +84,14 @@ Here is a sample `versions.cfg` file::
 
     [versions]
     somepackage=0.5.3
+    otherpackage=0.1.1
 
-You can create a new versions.cfg by retrieving the output ::
+You can generate a new versions.cfg ::
 
     $ checkversions -v -l 1 versions.cfg
     # Checking buildout file versions.cfg
     somepackage=0.6.2 # was: 0.5.0
+    otherpackage=0.1.2 # was: 0.1.1
 
 If you provide a blacklist file, such as `blacklist.cfg` containing bad
 versions, such as::
@@ -97,9 +101,17 @@ versions, such as::
 
 Then these versions won't be suggested::
 
-    $ checkversions -v -l 1 versions.cfg
+    $ checkversions -v -l 1 versions.cfg -b blacklist.cfg
     # Checking buildout file versions.cfg
     somepackage=0.6.0 # was: 0.5.0
+    otherpackage=0.1.2 # was: 0.1.1
+
+If you enable the incremental option, only one upgrade will be suggested::
+
+    $ checkversions --incremental -v -l 1 versions.cfg
+    # Checking buildout file versions.cfg
+    somepackage=0.6.0 # was: 0.5.0
+    otherpackage=0.1.1
 
 
 Run tests

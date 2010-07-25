@@ -47,6 +47,12 @@ def main():
                       default="",
                       help=u"Provide a blacklist file with bad versions")
 
+    parser.add_option('-1', '--incremental',
+                      dest='incremental',
+                      action='store_true',
+                      default=False,
+                      help=u"Suggest only one upgrade. Skip others.")
+
     parser.add_option('-v', '--verbose',
                       dest='verbose',
                       action='store_true',
@@ -72,11 +78,13 @@ def main():
         import buildout
         checker = buildout.Checker(filename=buildoutcfg,
                                    blacklist=options.blacklist,
+                                   incremental=options.incremental,
                                    verbose=options.verbose,
                                    **kw)
     else:
         import installed
         checker = installed.Checker(blacklist=options.blacklist,
+                                    incremental=options.incremental,
                                     verbose=options.verbose)
 
     checker.check(level=options.level)

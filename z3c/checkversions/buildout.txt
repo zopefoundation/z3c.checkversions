@@ -109,8 +109,23 @@ zope.interface=3.6.1 # was: 3.4.1
 Reading file:///.../zope.component/
 zope.component=3.9.2 # was: 3.4.0
 
+We can let the checker to suggest only one new package. This should be used to
+test a just single new package against a set of other packages.
+
+>>> checker = buildout.Checker(filename=buildout_path,
+...                            verbose=True,
+...                            incremental=True,
+...                            blacklist=blacklist_path)
+>>> checker.check()
+# Checking buildout file ...
+Reading file:///.../zope.interface/
+zope.interface=3.6.1 # was: 3.4.1
+Reading file:///.../zope.component/
+zope.component=3.4.0
+
 >>> os.remove(blacklist_path)
 >>> os.remove(buildout_path)
+
 
 console script
 --------------
