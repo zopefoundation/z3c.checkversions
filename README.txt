@@ -38,21 +38,25 @@ Usage
 ::
 
     $ checkversions -h
-    Usage: checkversions [-v] [-l LEVEL] [-i INDEX] [buildout_file]
+    Usage: checkversions [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]
     
     This script will check new package versions of either your current installed
     distributions or a buildout file if provided. It can detect major or minor
     versions availability: level 0 gets the highest version (X.y.z), level 1 gets
     the highest intermediate version (x.Y.z), level 2 gets the highest minor
     version (x.y.Z).  Using level 2, you can automatically retrieve all bugfix
-    versions of a buildout.
+    versions of a buildout.  If you provide a blacklist file with bad versions,
+    these versions won't be suggested.
     
     Options:
       -h, --help            show this help message and exit
       -l LEVEL, --level=LEVEL
                             Version level to check
       -i INDEX, --index=INDEX
-                            Alternative package index URL
+                            Provide and alternative package index URL
+      -b BLACKLIST, --blacklist=BLACKLIST
+                            Provide a blacklist file with bad versions
+      -1, --incremental     Suggest only one upgrade. Skip others.
       -v, --verbose         Verbose mode (prints old versions too)
 
 
@@ -78,13 +82,43 @@ It can work either with a full buildout.cfg or with a simple versions.cfg file.
 Here is a sample `versions.cfg` file::
 
     [versions]
-    pip=0.6.3
+    somepackage=0.5.3
+    otherpackage=0.1.1
 
-You can create a new versions.cfg with the output ::
+You can generate a new versions.cfg ::
 
     $ checkversions -v -l 1 versions.cfg
     # Checking buildout file versions.cfg
-    pip=0.7.1 # was: 0.6.3
+    somepackage=0.6.2 # was: 0.5.0
+    otherpackage=0.1.2 # was: 0.1.1
+
+If you provide a blacklist file, such as `blacklist.cfg` containing bad
+versions, such as::
+
+    somepackage=0.6.2
+    somepackage=0.6.1
+
+Then these versions won't be suggested::
+
+    $ checkversions -v -l 1 versions.cfg -b blacklist.cfg
+    # Checking buildout file versions.cfg
+    somepackage=0.6.0 # was: 0.5.0
+    otherpackage=0.1.2 # was: 0.1.1
+
+If you enable the `--incremental` option, only one upgrade will be suggested::
+
+    $ checkversions --incremental -v -l 1 versions.cfg
+    # Checking buildout file versions.cfg
+    somepackage=0.6.0 # was: 0.5.0
+    otherpackage=0.1.1
+
+
+Run tests
+=========
+
+Uncompress the archive, then run::
+
+    $ python setup.py test
 
 
 

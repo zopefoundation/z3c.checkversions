@@ -1,10 +1,13 @@
 Changelog
 =========
 
-0.4 (unreleased)
+0.4 (2010-07-26)
 ----------------
 
-- ...
+- added a `blacklist` option for passing versions to avoid
+  (possibly coming from a buildbot)
+- added a `incremental` option to suggest only one upgrade
+- remove a temporary file during tests
 
 0.3 (2010-07-09)
 ----------------
