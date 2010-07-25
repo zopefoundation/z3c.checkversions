@@ -68,6 +68,7 @@ zope.component=3.4.0
 
 The old comments are removed:
 
+>>> os.remove(buildout_path)
 >>> buildout_fd, buildout_path = mkstemp()
 >>> buildout_file = os.fdopen(buildout_fd, 'w')
 >>> buildout_file.write("""
@@ -88,7 +89,28 @@ zope.interface=3.6.1 # was: 3.4.1
 Reading file:///.../zope.component/
 zope.component=3.9.4 # was: 3.4.0
 
+We can provide a blacklist file, containing versions to not suggest.
+This file may come from a buildbot remembering failures.
 
+>>> blacklist_fd, blacklist_path = mkstemp()
+>>> blacklist_file = os.fdopen(blacklist_fd, 'w')
+>>> blacklist_file.write("""
+... zope.component =3.9.4  
+... zope.component = 3.9.3""")
+>>> blacklist_file.close()
+
+>>> checker = buildout.Checker(filename=buildout_path,
+...                            verbose=True,
+...                            blacklist=blacklist_path)
+>>> checker.check()
+# Checking buildout file ...
+Reading file:///.../zope.interface/
+zope.interface=3.6.1 # was: 3.4.1
+Reading file:///.../zope.component/
+zope.component=3.9.2 # was: 3.4.0
+
+>>> os.remove(blacklist_path)
+>>> os.remove(buildout_path)
 
 console script
 --------------
@@ -101,12 +123,10 @@ We are using it directly here:
 >>> from subprocess import Popen, PIPE
 >>> p = Popen([sys.executable, main.__file__, '-h'],
 ...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
->>> print p.stdout.read()
-Usage: ...
-...
+
+# the "usage" attribute of optparse is inconsistent between python versions
+>>> p.stdout.read().lower().startswith('usage: ')
+True
 
 
-Clean the tmp file:
-
->>> os.remove(buildout_path)
 

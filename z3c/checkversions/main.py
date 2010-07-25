@@ -19,13 +19,17 @@ level 1 gets the highest intermediate version (x.Y.z),
 level 2 gets the highest minor version (x.y.Z).
 
 Using level 2, you can automatically retrieve all bugfix versions of a buildout.
+
+If you provide a blacklist file with bad versions, these versions won't be
+suggested.
 """
 
 from optparse import OptionParser
+import os
 
 def main():
 
-    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [buildout_file]"
+    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]"
     parser = OptionParser(description=__doc__, usage=usage)
 
     parser.add_option('-l', '--level',
@@ -36,7 +40,12 @@ def main():
 
     parser.add_option('-i', '--index',
                       dest='index',
-                      help=u"Alternative package index URL")
+                      help=u"Provide and alternative package index URL")
+
+    parser.add_option('-b', '--blacklist',
+                      dest='blacklist',
+                      default="",
+                      help=u"Provide a blacklist file with bad versions")
 
     parser.add_option('-v', '--verbose',
                       dest='verbose',
@@ -47,6 +56,9 @@ def main():
 
     if len(args) > 1:
         parser.error("You must specify only one argument")
+
+    if options.blacklist != "" and not os.path.exists(options.blacklist):
+        parser.error('The blacklist file "%s" does not exist!' % options.blacklist)
 
     buildoutcfg = False
     if len(args) == 1:
@@ -59,11 +71,13 @@ def main():
     if buildoutcfg:
         import buildout
         checker = buildout.Checker(filename=buildoutcfg,
+                                   blacklist=options.blacklist,
                                    verbose=options.verbose,
                                    **kw)
     else:
         import installed
-        checker = installed.Checker(verbose=options.verbose)
+        checker = installed.Checker(blacklist=options.blacklist,
+                                    verbose=options.verbose)
 
     checker.check(level=options.level)
 

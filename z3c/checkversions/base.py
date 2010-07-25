@@ -30,8 +30,14 @@ class Checker(object):
     """Base class for version checkers
     """
     __custom_url = False
-    def __init__(self, index_url=None, verbose=False):
+    def __init__(self, index_url=None, verbose=False, blacklist=None):
         self.verbose = verbose
+        if blacklist:
+            # create a set of tuples with bad versions
+            self.blacklist = set([tuple(map(lambda x: x.strip(), line.split('=')))
+                        for line in open(blacklist).readlines() if '=' in line])
+        else:
+            self.blacklist = set()
         self.pi = package_index.PackageIndex()
         self._set_index_url(index_url)
         if index_url is not None:
@@ -67,7 +73,10 @@ class Checker(object):
             # loop all index versions until we find the 1st newer version
             # that keeps the major versions (below level)
             # and is a final version
+            # and is not in the blacklist
             for dist in self.pi[req.key]:
+                if (dist.project_name, dist.version) in self.blacklist:
+                    continue
                 if not _final_version(dist.parsed_version):
                     continue
                 if dist.parsed_version[:level] > parsed_version[:level]:

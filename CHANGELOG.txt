@@ -4,7 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- ...
+- added a `blacklist` option for versions to avoid
+  (possibly coming from a buildbot)
+- remove a temporary file during tests
 
 0.3 (2010-07-09)
 ----------------
