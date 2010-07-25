@@ -120,7 +120,6 @@ test a just single new package against a set of other packages.
 # Checking buildout file ...
 Reading file:///.../zope.interface/
 zope.interface=3.6.1 # was: 3.4.1
-Reading file:///.../zope.component/
 zope.component=3.4.0
 
 >>> os.remove(blacklist_path)
