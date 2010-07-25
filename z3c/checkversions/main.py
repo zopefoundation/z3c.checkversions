@@ -29,7 +29,7 @@ import os
 
 def main():
 
-    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]"
+    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [-1] [buildout_file]"
     parser = OptionParser(description=__doc__, usage=usage)
 
     parser.add_option('-l', '--level',
