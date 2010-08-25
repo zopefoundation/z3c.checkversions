@@ -10,7 +10,7 @@ For the tests, we use two fake local indices
 >>> print testindex
 file:///.../testindex
 
-We create a buildout with a versions section and a custom index:
+We create a buildout with a [versions] section and a custom index:
 
 >>> import os
 >>> from tempfile import mkstemp
@@ -22,7 +22,7 @@ We create a buildout with a versions section and a custom index:
 ... versions = versions
 ... [versions]
 ... zope.interface = 3.4.0
-... zope.component = 3.4.0
+... zope.component = 3.0.0
 ... """ % testindex)
 >>> buildout_file.close()
 
@@ -32,7 +32,7 @@ We can now check the new highest versions:
 >>> checker = buildout.Checker(filename=buildout_path)
 >>> checker.get_versions()
 # Checking buildout file ...
-{'zope.interface': '3.4.0', 'zope.component': '3.4.0'}
+{'zope.interface': '3.4.0', 'zope.component': '3.0.0'}
 >>> checker.check()
 # Checking buildout file ...
 Reading file:///.../zope.interface/
@@ -45,6 +45,8 @@ We can check only the minor versions:
 >>> checker.check(level=2)
 # Checking buildout file ...
 zope.interface=3.4.1
+zope.component=3.0.3
+
 
 We can provide a different index url:
 
@@ -64,7 +66,7 @@ The verbose mode gives the current and previous versions
 Reading file:///.../zope.interface/
 zope.interface=3.4.1 # was: 3.4.0
 Reading file:///.../zope.component/
-zope.component=3.4.0
+zope.component=3.0.3 # was: 3.0.0
 
 The old comments are removed:
 
@@ -77,7 +79,7 @@ The old comments are removed:
 ... versions = versions
 ... [versions]
 ... zope.interface = 3.4.1 # was: 3.4.0
-... zope.component = 3.4.0
+... zope.component = 3.0.3
 ... """ % testindex)
 >>> buildout_file.close()
 
@@ -87,7 +89,7 @@ The old comments are removed:
 Reading file:///.../zope.interface/
 zope.interface=3.6.1 # was: 3.4.1
 Reading file:///.../zope.component/
-zope.component=3.9.4 # was: 3.4.0
+zope.component=3.9.4 # was: 3.0.3
 
 We can provide a blacklist file, containing versions to not suggest.
 This file may come from a buildbot remembering failures.
@@ -107,7 +109,7 @@ This file may come from a buildbot remembering failures.
 Reading file:///.../zope.interface/
 zope.interface=3.6.1 # was: 3.4.1
 Reading file:///.../zope.component/
-zope.component=3.9.2 # was: 3.4.0
+zope.component=3.9.2 # was: 3.0.3
 
 We can let the checker to suggest only one new package. This should be used to
 test a just single new package against a set of other packages.
@@ -120,7 +122,7 @@ test a just single new package against a set of other packages.
 # Checking buildout file ...
 Reading file:///.../zope.interface/
 zope.interface=3.6.1 # was: 3.4.1
-zope.component=3.4.0
+zope.component=3.0.3
 
 >>> os.remove(blacklist_path)
 >>> os.remove(buildout_path)

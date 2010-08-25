@@ -98,7 +98,20 @@ class Checker(object):
                     continue
                 if not _final_version(dist.parsed_version):
                     continue
-                if dist.parsed_version[:level] > parsed_version[:level]:
+                # trunk the version tuple to the first `level` elements
+                trunked_current = list(parsed_version[:level])
+                trunked_candidate = list(dist.parsed_version[:level])
+                # remove *final and pad both to the level length
+                if '*final' in trunked_candidate:
+                    trunked_candidate.remove('*final')
+                while len(trunked_candidate) < level:
+                    trunked_candidate.append('00000000')
+                if '*final' in trunked_current:
+                    trunked_current.remove('*final')
+                while len(trunked_current) < level:
+                    trunked_current.append('00000000')
+                # ok now we can compare: -> skip if we're still higher.
+                if trunked_candidate > trunked_current:
                     continue
                 new_dist = dist
                 break
