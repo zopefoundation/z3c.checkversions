@@ -38,7 +38,7 @@ Usage
 ::
 
     $ checkversions -h
-    Usage: checkversions [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]
+    Usage: checkversions [-v] [-1] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]
     
     This script will check new package versions of either your current installed
     distributions or a buildout file if provided. It can detect major or minor

@@ -15,7 +15,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.5dev'
+version = '0.4.1'
 
 setup(name='z3c.checkversions',
       version=version,
@@ -25,7 +25,7 @@ setup(name='z3c.checkversions',
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
        "Programming Language :: Python",
-       'Development Status :: 4 - Beta',
+       'Development Status :: 5 - Production/Stable',
        'Environment :: Console',
        'Intended Audience :: Developers',
        'License :: OSI Approved :: Zope Public License',
