@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - fixed edge case bug where 1.0 was never updated to 1.0.x
+- warn buildout users about the extra requirement
 
 0.4 (2010-07-26)
 ----------------

@@ -12,7 +12,16 @@
 #
 ##############################################################################
 
-from zc.buildout.buildout import Buildout
+import sys
+
+try:
+    from zc.buildout.buildout import Buildout
+except ImportError:
+    raise ImportError(u"zc.buildout is not installed! \n"
+          "If you're in a buildout environment,\n"
+          "enable the buildout extra requirement like this:\n"
+          "eggs = z3c.checkversions [buildout]")
+
 from z3c.checkversions import base
 
 
