@@ -41,9 +41,11 @@ class Checker(object):
     def __init__(self,
                  index_url=None,
                  verbose=False,
+                 quiet=False,
                  blacklist=None,
                  incremental=False):
         self.verbose = verbose
+        self.quiet = quiet
         self.incremental = incremental
         if blacklist:
             # create a set of tuples with bad versions
@@ -81,7 +83,8 @@ class Checker(object):
         for name, version in versions.items():
             if self.incremental == 'stop':
                 # skip subsequent scans
-                print("%s=%s" % (name, version))
+                if self.verbose:
+                    print("%s=%s" % (name, version))
                 continue
             parsed_version = parse_version(version)
             req = Requirement.parse(name)

@@ -39,8 +39,9 @@ class Checker(base.Checker):
         buildout_index = buildout['buildout'].get('index')
         if not self.__custom_url:
             self._set_index_url(buildout_index)
-
-        print(u"# Checking buildout file %s" % self.filename)
+            
+        if not self.quiet:
+            print(u"# Checking buildout file %s" % self.filename)
         return buildout['versions']
 
 

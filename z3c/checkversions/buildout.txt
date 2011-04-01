@@ -115,7 +115,7 @@ We can let the checker to suggest only one new package. This should be used to
 test a just single new package against a set of other packages.
 
 >>> checker = buildout.Checker(filename=buildout_path,
-...                            verbose=True,
+...                            verbose=False,
 ...                            incremental=True,
 ...                            blacklist=blacklist_path)
 >>> checker.check()

@@ -58,6 +58,13 @@ def main():
                       action='store_true',
                       default=False,
                       help=u"Verbose mode (prints old versions too)")
+
+    parser.add_option('-q', '--quiet',
+                      dest='quiet',
+                      action='store_true',
+                      default=False,
+                      help=u"Quiet mode (supresses debugging output)")
+
     options, args = parser.parse_args()
 
     if len(args) > 1:
@@ -80,12 +87,14 @@ def main():
                                    blacklist=options.blacklist,
                                    incremental=options.incremental,
                                    verbose=options.verbose,
+                                   quiet=options.quiet,
                                    **kw)
     else:
         import installed
         checker = installed.Checker(blacklist=options.blacklist,
                                     incremental=options.incremental,
-                                    verbose=options.verbose)
+                                    verbose=options.verbose,
+                                    quiet=options.quiet)
 
     checker.check(level=options.level)
 
