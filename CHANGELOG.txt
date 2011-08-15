@@ -4,7 +4,8 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- ...
+- print old version comment on a separate line to make generated output usable in
+  buildout.
 
 0.4.1 (2010-08-25)
 ------------------

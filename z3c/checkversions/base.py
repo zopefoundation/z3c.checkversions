@@ -118,10 +118,8 @@ class Checker(object):
                 if self.incremental == True:
                     self.incremental = 'stop'
                 if self.verbose:
-                    print("%s=%s # was: %s"
-                          % (name, new_dist.version, version.split()[0]))
-                else:
-                    print("%s=%s" % (name, new_dist.version))
+                    print("# was: %s" % version.split()[0])
+                print("%s=%s" % (name, new_dist.version))
             elif self.verbose:
                 print("%s=%s" % (name, version.split()[0]))
 
