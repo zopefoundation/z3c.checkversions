@@ -12,8 +12,6 @@
 #
 ##############################################################################
 
-import sys
-
 try:
     from zc.buildout.buildout import Buildout
 except ImportError:
