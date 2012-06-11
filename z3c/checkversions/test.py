@@ -13,13 +13,17 @@
 ##############################################################################
 
 from doctest import DocFileSuite, ELLIPSIS, NORMALIZE_WHITESPACE
-import unittest
+import distutils.log
+
+def setUp(test):
+    test._old_log_level = distutils.log.set_threshold(distutils.log.INFO)
+
+def tearDown(test):
+    distutils.log.set_threshold(test._old_log_level)
 
 def test():
     optionflags = ELLIPSIS|NORMALIZE_WHITESPACE
-    suite = unittest.TestSuite()
-    suite.addTest(DocFileSuite('README.txt', optionflags=optionflags))
-    suite.addTest(DocFileSuite('buildout.txt', optionflags=optionflags))
-    suite.addTest(DocFileSuite('installed.txt', optionflags=optionflags))
-
+    suite = DocFileSuite('README.txt', 'buildout.txt', 'installed.txt',
+                         setUp=setUp, tearDown=tearDown,
+                         optionflags=optionflags)
     return suite
