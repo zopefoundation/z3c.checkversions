@@ -78,7 +78,7 @@ class Checker(object):
         """
         versions = self.get_versions()
 
-        for name, version in versions.items():
+        for name, version in sorted(versions.items()):
             if self.incremental == 'stop':
                 # skip subsequent scans
                 print("%s=%s" % (name, version))
