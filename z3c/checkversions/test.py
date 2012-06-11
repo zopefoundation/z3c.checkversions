@@ -14,6 +14,15 @@
 
 from doctest import DocFileSuite, ELLIPSIS, NORMALIZE_WHITESPACE
 import distutils.log
+import os
+import tempfile
+
+def write_temp_file(content):
+    fd, path = tempfile.mkstemp(prefix='test-z3c.checkversions-')
+    f = os.fdopen(fd, 'w')
+    f.write(content)
+    f.close()
+    return path
 
 def setUp(test):
     test._old_log_level = distutils.log.set_threshold(distutils.log.ERROR)

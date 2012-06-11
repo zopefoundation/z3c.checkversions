@@ -21,7 +21,7 @@ class Checker(base.Checker):
     def get_versions(self, level=0):
         working_set = pkg_resources.working_set
         versions = dict([(d.key, d.version) for d in working_set])
-        print "# Checking your installed distributions"
+        print("# Checking your installed distributions")
         return versions
 
 

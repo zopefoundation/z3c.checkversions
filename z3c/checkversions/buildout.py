@@ -15,7 +15,7 @@
 try:
     from zc.buildout.buildout import Buildout
 except ImportError:
-    raise ImportError(u"zc.buildout is not installed! \n"
+    raise ImportError("zc.buildout is not installed! \n"
           "If you're in a buildout environment,\n"
           "enable the buildout extra requirement like this:\n"
           "eggs = z3c.checkversions [buildout]")
@@ -38,7 +38,7 @@ class Checker(base.Checker):
         if not self.__custom_url:
             self._set_index_url(buildout_index)
 
-        print(u"# Checking buildout file %s" % self.filename)
+        print("# Checking buildout file %s" % self.filename)
         return buildout['versions']
 
 

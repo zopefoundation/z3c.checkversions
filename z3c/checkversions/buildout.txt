@@ -7,16 +7,14 @@ For the tests, we use two fake local indices
 >>> from os.path import dirname, sep
 >>> testindex = 'file://' + dirname(z3c.checkversions.__file__).replace(sep, '/') + '/testindex'
 >>> testindex2 = 'file://' + dirname(z3c.checkversions.__file__).replace(sep, '/') + '/testindex2'
->>> print testindex
+>>> print(testindex)
 file:///.../testindex
 
 We create a buildout with a [versions] section and a custom index:
 
 >>> import os
->>> from tempfile import mkstemp
->>> buildout_fd, buildout_path = mkstemp()
->>> buildout_file = os.fdopen(buildout_fd, 'w')
->>> buildout_file.write("""
+>>> from z3c.checkversions.test import write_temp_file
+>>> buildout_path = write_temp_file("""
 ... [buildout]
 ... index = %s
 ... versions = versions
@@ -24,7 +22,6 @@ We create a buildout with a [versions] section and a custom index:
 ... zope.interface = 3.4.0
 ... zope.component = 3.0.0
 ... """ % testindex)
->>> buildout_file.close()
 
 We can now check the new highest versions:
 
@@ -68,9 +65,7 @@ zope.interface=3.4.1
 The old comments are removed:
 
 >>> os.remove(buildout_path)
->>> buildout_fd, buildout_path = mkstemp()
->>> buildout_file = os.fdopen(buildout_fd, 'w')
->>> buildout_file.write("""
+>>> buildout_path = write_temp_file("""
 ... [buildout]
 ... index = %s
 ... versions = versions
@@ -79,7 +74,6 @@ The old comments are removed:
 ... zope.interface = 3.4.1
 ... zope.component = 3.0.3
 ... """ % testindex)
->>> buildout_file.close()
 
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check()
@@ -92,12 +86,9 @@ zope.interface=3.6.1
 We can provide a blacklist file, containing versions to not suggest.
 This file may come from a buildbot remembering failures.
 
->>> blacklist_fd, blacklist_path = mkstemp()
->>> blacklist_file = os.fdopen(blacklist_fd, 'w')
->>> blacklist_file.write("""
+>>> blacklist_path = write_temp_file("""
 ... zope.component =3.9.4  
 ... zope.component = 3.9.3""")
->>> blacklist_file.close()
 
 >>> checker = buildout.Checker(filename=buildout_path,
 ...                            verbose=True,
@@ -141,6 +132,4 @@ We are using it directly here:
 # the "usage" attribute of optparse is inconsistent between python versions
 >>> p.stdout.read().lower().startswith('usage: ')
 True
-
-
 
