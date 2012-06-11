@@ -8,6 +8,8 @@ Changelog
   in buildout.
 - ignore installed packages while searching for new versions, only look in
   the package index (makes the test suite more reliable, among other things).
+- fix IndexError: list index out of range when buildout.cfg had a package with
+  a blank version pin.
 
 0.4.1 (2010-08-25)
 ------------------

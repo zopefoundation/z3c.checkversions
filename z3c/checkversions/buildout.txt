@@ -133,3 +133,27 @@ We are using it directly here:
 >>> p.stdout.read().lower().startswith('usage: ')
 True
 
+
+explicitly unpinned versions
+----------------------------
+
+it's possible to explicitly say you don't want a particular package to be
+pinned.
+
+>>> buildout_path = write_temp_file("""
+... [buildout]
+... index = %s
+... versions = versions
+... [versions]
+... distribute =
+... zope.component = 3.0.0
+... """ % testindex)
+
+>>> checker = buildout.Checker(filename=buildout_path, verbose=True)
+>>> checker.check()
+# Checking buildout file ...
+distribute=
+# was: 3.0.0
+zope.component=3.9.4
+
+>>> os.remove(buildout_path)
