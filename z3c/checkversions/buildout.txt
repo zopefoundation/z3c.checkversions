@@ -35,9 +35,7 @@ We can now check the new highest versions:
 {'zope.interface': '3.4.0', 'zope.component': '3.0.0'}
 >>> checker.check()
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 zope.interface=3.6.1
-Reading file:///.../zope.component/
 zope.component=3.9.4
 
 We can check only the minor versions:
@@ -53,9 +51,7 @@ We can provide a different index url:
 >>> checker = buildout.Checker(filename=buildout_path, index_url=testindex2)
 >>> checker.check()
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 zope.interface=3.6.2
-Reading file:///.../zope.component/
 zope.component=3.9.3
 
 The verbose mode gives the current and previous versions
@@ -63,10 +59,8 @@ The verbose mode gives the current and previous versions
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check(level=2)
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 # was: 3.4.0
 zope.interface=3.4.1
-Reading file:///.../zope.component/
 # was: 3.0.0
 zope.component=3.0.3
 
@@ -89,10 +83,8 @@ The old comments are removed:
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check()
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 # was: 3.4.1
 zope.interface=3.6.1
-Reading file:///.../zope.component/
 # was: 3.0.3
 zope.component=3.9.4
 
@@ -111,10 +103,8 @@ This file may come from a buildbot remembering failures.
 ...                            blacklist=blacklist_path)
 >>> checker.check()
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 # was: 3.4.1
 zope.interface=3.6.1
-Reading file:///.../zope.component/
 # was: 3.0.3
 zope.component=3.9.2
 
@@ -127,7 +117,6 @@ test a just single new package against a set of other packages.
 ...                            blacklist=blacklist_path)
 >>> checker.check()
 # Checking buildout file ...
-Reading file:///.../zope.interface/
 # was: 3.4.1
 zope.interface=3.6.1
 zope.component=3.0.3

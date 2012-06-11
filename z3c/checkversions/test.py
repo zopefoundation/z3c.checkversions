@@ -16,7 +16,7 @@ from doctest import DocFileSuite, ELLIPSIS, NORMALIZE_WHITESPACE
 import distutils.log
 
 def setUp(test):
-    test._old_log_level = distutils.log.set_threshold(distutils.log.INFO)
+    test._old_log_level = distutils.log.set_threshold(distutils.log.ERROR)
 
 def tearDown(test):
     distutils.log.set_threshold(test._old_log_level)
