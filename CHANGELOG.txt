@@ -4,8 +4,10 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- print old version comment on a separate line to make generated output usable in
-  buildout.
+- print old version comment on a separate line to make generated output usable
+  in buildout.
+- ignore installed packages while searching for new versions, only look in
+  the package index (makes the test suite more reliable, among other things).
 
 0.4.1 (2010-08-25)
 ------------------

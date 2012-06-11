@@ -51,7 +51,7 @@ class Checker(object):
                         for line in open(blacklist).readlines() if '=' in line])
         else:
             self.blacklist = set()
-        self.pi = package_index.PackageIndex()
+        self.pi = package_index.PackageIndex(search_path=())
         self._set_index_url(index_url)
         if index_url is not None:
             self.__custom_url = True
