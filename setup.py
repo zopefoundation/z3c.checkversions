@@ -52,7 +52,7 @@ setup(name='z3c.checkversions',
       ],
       extras_require={'buildout': ['zc.buildout']},
       tests_require=['zc.buildout'],
-      test_suite='z3c.checkversions.test.test',
+      test_suite='z3c.checkversions.test.test_suite',
       entry_points="""
       # -*- Entry points: -*-
       [console_scripts]

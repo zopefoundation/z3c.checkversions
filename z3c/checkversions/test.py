@@ -21,7 +21,7 @@ def setUp(test):
 def tearDown(test):
     distutils.log.set_threshold(test._old_log_level)
 
-def test():
+def test_suite():
     optionflags = ELLIPSIS|NORMALIZE_WHITESPACE
     suite = DocFileSuite('README.txt', 'buildout.txt', 'installed.txt',
                          setUp=setUp, tearDown=tearDown,
