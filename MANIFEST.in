@@ -1,3 +1,7 @@
+include *.rst
 include *.txt
-include MANIFEST.in
-recursive-include z3c *.txt *.html
+
+recursive-include src *
+
+global-exclude *.pyc
+global-exclude *.pyo

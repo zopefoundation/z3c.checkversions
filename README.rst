@@ -24,7 +24,7 @@ or in a buildout::
 
     [buildout]
     parts = checkversions
-    
+
     [checkversions]
     recipe=zc.recipe.egg
     eggs=z3c.checkversions [buildout]
@@ -39,7 +39,7 @@ Usage
 
     $ checkversions -h
     Usage: checkversions [-v] [-1] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [buildout_file]
-    
+
     This script will check new package versions of either your current installed
     distributions or a buildout file if provided. It can detect major or minor
     versions availability: level 0 gets the highest version (X.y.z), level 1 gets
@@ -47,7 +47,7 @@ Usage
     version (x.y.Z).  Using level 2, you can automatically retrieve all bugfix
     versions of a buildout.  If you provide a blacklist file with bad versions,
     these versions won't be suggested.
-    
+
     Options:
       -h, --help            show this help message and exit
       -l LEVEL, --level=LEVEL
@@ -119,6 +119,3 @@ Run tests
 Uncompress the archive, then run::
 
     $ python setup.py test
-
-
-
