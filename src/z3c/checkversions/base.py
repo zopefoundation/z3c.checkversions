@@ -77,7 +77,7 @@ class Checker(object):
         By default, the highest version is found.
         """
         versions = self.get_versions()
-
+        
         for name, version in sorted(versions.items()):
             if self.incremental == 'stop':
                 # skip subsequent scans
@@ -96,7 +96,8 @@ class Checker(object):
                     continue
                 if (dist.project_name, dist.version) in self.blacklist:
                     continue
-                if not _final_version(dist.parsed_version):
+                if _final_version(parsed_version) and not _final_version(dist.parsed_version):
+                    #only skip non-final releases if the current release is a final one
                     continue
                 # trunk the version tuple to the first `level` elements
                 # (and remove *final and pad both to the level length)
@@ -118,8 +119,9 @@ class Checker(object):
                 if self.incremental == True:
                     self.incremental = 'stop'
                 if self.verbose:
-                    print("# was: %s=%s" % (name, version))
-                print("%s=%s" % (name, new_dist.version))
+                    print("%s=%s # was: %s=%s" % (name, new_dist.version, name, version))
+                else:
+                    print("%s=%s" % (name, new_dist.version))
             elif self.verbose:
                 print("%s=%s" % (name, version))
 
