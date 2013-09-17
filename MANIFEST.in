@@ -1,5 +1,7 @@
 include *.rst
 include *.txt
+include tox.ini
+include .travis.yml
 
 recursive-include src *
 
