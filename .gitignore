@@ -8,9 +8,10 @@ man
 parts
 
 __pycache__
-.*
+.coverage
 *.dll
 *.pyc
 *.pyo
 *.so
 *.egg-info/
+.tox/

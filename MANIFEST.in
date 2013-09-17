@@ -2,6 +2,7 @@ include *.rst
 include *.txt
 include tox.ini
 include .travis.yml
+include .coveragerc
 
 recursive-include src *
 
