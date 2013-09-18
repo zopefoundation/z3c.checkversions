@@ -61,8 +61,8 @@ using grep (``bin/checkversions -v | grep was``)
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check(level=2)
 # Checking buildout file ...
-zope.component=3.0.3 # was: zope.component=3.0.0
-zope.interface=3.4.1 # was: zope.interface=3.4.0
+zope.component=3.0.3 # was: 3.0.0
+zope.interface=3.4.1 # was: 3.4.0
 
 The old comments are removed:
 
@@ -80,8 +80,8 @@ The old comments are removed:
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check()
 # Checking buildout file ...
-zope.component=3.9.4 # was: zope.component=3.0.3
-zope.interface=3.6.1 # was: zope.interface=3.4.1
+zope.component=3.9.4 # was: 3.0.3
+zope.interface=3.6.1 # was: 3.4.1
 
 We can provide a blacklist file, containing versions to not suggest.
 This file may come from a buildbot remembering failures.
@@ -95,8 +95,8 @@ This file may come from a buildbot remembering failures.
 ...                            blacklist=blacklist_path)
 >>> checker.check()
 # Checking buildout file ...
-zope.component=3.9.2 # was: zope.component=3.0.3
-zope.interface=3.6.1 # was: zope.interface=3.4.1
+zope.component=3.9.2 # was: 3.0.3
+zope.interface=3.6.1 # was: 3.4.1
 
 We can let the checker to suggest only one new package. This should be used to
 test a just single new package against a set of other packages.
@@ -107,7 +107,7 @@ test a just single new package against a set of other packages.
 ...                            blacklist=blacklist_path)
 >>> checker.check()
 # Checking buildout file ...
-zope.component=3.9.2 # was: zope.component=3.0.3
+zope.component=3.9.2 # was: 3.0.3
 zope.interface=3.4.1
 
 >>> os.remove(blacklist_path)
@@ -151,6 +151,6 @@ pinned.
 # Checking buildout file ...
 distribute=
 zc.buildout=...
-zope.component=3.9.4 # was: zope.component=3.0.0
+zope.component=3.9.4 # was: 3.0.0
 
 >>> os.remove(buildout_path)

@@ -77,7 +77,7 @@ class Checker(object):
         By default, the highest version is found.
         """
         versions = self.get_versions()
-        
+
         for name, version in sorted(versions.items()):
             if self.incremental == 'stop':
                 # skip subsequent scans
@@ -119,7 +119,7 @@ class Checker(object):
                 if self.incremental == True:
                     self.incremental = 'stop'
                 if self.verbose:
-                    print("%s=%s # was: %s=%s" % (name, new_dist.version, name, version))
+                    print("%s=%s # was: %s" % (name, new_dist.version, version))
                 else:
                     print("%s=%s" % (name, new_dist.version))
             elif self.verbose:
