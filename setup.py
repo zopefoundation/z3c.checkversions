@@ -14,11 +14,9 @@
 
 from setuptools import setup, find_packages
 
-__version__ = '0.4.2dev'
-
 setup(
     name='z3c.checkversions',
-    version=__version__,
+    version='0.4.2.dev0',
     description="Find newer package versions on PyPI",
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
