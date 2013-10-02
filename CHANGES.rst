@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.2 (unreleased)
+0.4.2 (2013-10-02)
 ------------------
 
 - ignore installed packages while searching for new versions, only look in
