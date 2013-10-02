@@ -1,15 +1,17 @@
 Changelog
 =========
 
-0.5 (unreleased)
-----------------
+0.4.2 (unreleased)
+------------------
 
-- print old version comment on a separate line to make generated output usable
-  in buildout.
 - ignore installed packages while searching for new versions, only look in
   the package index (makes the test suite more reliable, among other things).
 - fix IndexError: list index out of range when buildout.cfg had a package with
   a blank version pin.
+- show updates for non-final package versions, if there's a newer non-final
+  version available on PyPI (`GH #1`_)
+
+.. _GH #1: https://github.com/zopefoundation/z3c.checkversions/pull/1
 
 0.4.1 (2010-08-25)
 ------------------

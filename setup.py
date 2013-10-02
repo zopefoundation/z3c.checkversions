@@ -14,7 +14,7 @@
 
 from setuptools import setup, find_packages
 
-__version__ = '0.5dev'
+__version__ = '0.4.2dev'
 
 setup(
     name='z3c.checkversions',

@@ -9,6 +9,8 @@ This package provides a console script named ``checkversions``.
 .. image:: https://travis-ci.org/zopefoundation/z3c.checkversions.png?branch=master
    :target: https://travis-ci.org/zopefoundation/z3c.checkversions
 
+.. contents::
+
 Install
 =======
 
