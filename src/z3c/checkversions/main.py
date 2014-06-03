@@ -24,6 +24,8 @@ If you provide a blacklist file with bad versions, these versions won't be
 suggested.
 """
 
+from __future__ import absolute_import
+
 from optparse import OptionParser
 import os
 
@@ -75,14 +77,14 @@ def main():
         kw['index_url'] = options.index
 
     if buildoutcfg:
-        import buildout
+        from . import buildout
         checker = buildout.Checker(filename=buildoutcfg,
                                    blacklist=options.blacklist,
                                    incremental=options.incremental,
                                    verbose=options.verbose,
                                    **kw)
     else:
-        import installed
+        from . import installed
         checker = installed.Checker(blacklist=options.blacklist,
                                     incremental=options.incremental,
                                     verbose=options.verbose)
