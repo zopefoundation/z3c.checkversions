@@ -47,8 +47,12 @@ class Checker(object):
         self.incremental = incremental
         if blacklist:
             # create a set of tuples with bad versions
-            self.blacklist = set([tuple(map(lambda x: x.strip(), line.split('=')))
-                        for line in open(blacklist).readlines() if '=' in line])
+            with open(blacklist) as b:
+                self.blacklist = set([
+                    tuple(map(lambda x: x.strip(), line.split('=')))
+                    for line in b.readlines()
+                    if '=' in line
+                ])
         else:
             self.blacklist = set()
         self.pi = package_index.PackageIndex(search_path=())
