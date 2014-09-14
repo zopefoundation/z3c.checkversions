@@ -127,7 +127,7 @@ We are using it directly here:
 ...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
 # the "usage" attribute of optparse is inconsistent between python versions
->>> p.stdout.read().lower().startswith('usage: ')
+>>> p.stdout.read().lower().startswith(b'usage: ')
 True
 
 
