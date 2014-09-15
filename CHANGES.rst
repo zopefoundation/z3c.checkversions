@@ -4,8 +4,10 @@ Changelog
 0.4.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Python 3 support by Nicolas Dietrich (`GH #2`_, `GH #4`_)
 
+.. _GH #2: https://github.com/zopefoundation/z3c.checkversions/pull/2
+.. _GH #4: https://github.com/zopefoundation/z3c.checkversions/pull/4
 
 0.4.2 (2013-10-02)
 ------------------
