@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.4.3 (unreleased)
-------------------
+0.5 (2014-09-15)
+----------------
 
 - Python 3 support by Nicolas Dietrich (`GH #2`_, `GH #4`_)
 
