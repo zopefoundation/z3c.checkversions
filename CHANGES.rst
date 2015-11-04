@@ -4,7 +4,7 @@ Changelog
 0.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Standardize namespace __init__
 
 
 0.5 (2014-09-15)
