@@ -30,7 +30,6 @@ We can now check the new highest versions:
 >>> checker = buildout.Checker(filename=buildout_path)
 >>> pprint(dict((k, v) for k, v in checker.get_versions().items()
 ...             if k not in ('zc.buildout', 'zc.recipe.egg')))
-... # doctest: +NORMALIZE_WHITESPACE
 # Checking buildout file ...
 {'zope.component': '3.0.0',
  'zope.interface': '3.4.0'}
