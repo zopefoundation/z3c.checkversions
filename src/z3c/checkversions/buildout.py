@@ -31,6 +31,8 @@ class Checker(base.Checker):
         super(Checker, self).__init__(*args, **kw)
 
     def get_versions(self):
+        print("# Checking buildout file %s" % self.filename)
+
         buildout = Buildout(self.filename, '')
 
         # set the index URL from the buildout if not already provided
@@ -38,7 +40,6 @@ class Checker(base.Checker):
         if not self.__custom_url:
             self._set_index_url(buildout_index)
 
-        print("# Checking buildout file %s" % self.filename)
         return buildout['versions']
 
 
