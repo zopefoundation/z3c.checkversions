@@ -28,9 +28,10 @@ We can now check the new highest versions:
 >>> from pprint import pprint
 >>> from z3c.checkversions import buildout
 >>> checker = buildout.Checker(filename=buildout_path)
->>> pprint(dict((k, v) for k, v in checker.get_versions().items()
-...             if k not in ('zc.buildout', 'zc.recipe.egg')))
+>>> versions = checker.get_versions()
 # Checking buildout file ...
+>>> pprint(dict((k, v) for k, v in versions.items()
+...             if k not in ('zc.buildout', 'zc.recipe.egg')))
 {'zope.component': '3.0.0',
  'zope.interface': '3.4.0'}
 >>> checker.check()
