@@ -6,7 +6,7 @@ packages in a buildout file.
 
 This package provides a console script named ``checkversions``.
 
-.. image:: https://travis-ci.org/zopefoundation/z3c.checkversions.png?branch=master
+.. image:: https://travis-ci.org/zopefoundation/z3c.checkversions.svg?branch=master
    :target: https://travis-ci.org/zopefoundation/z3c.checkversions
 
 .. contents::
