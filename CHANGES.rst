@@ -1,8 +1,11 @@
 Changelog
 =========
 
-0.5.1 (unreleased)
-------------------
+1.0 (unreleased)
+----------------
+
+- Fix compatibility with setuptools 39 by using an API introduced
+  in setuptools 8.
 
 - Standardize namespace __init__
 
