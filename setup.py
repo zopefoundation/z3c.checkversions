@@ -16,12 +16,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='z3c.checkversions',
-    version='0.5.1.dev0',
+    version='1.0.dev0',
     description="Find newer package versions on PyPI",
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
     classifiers=[
-        "Programming Language :: Python",
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Intended Audience :: Developers',
@@ -35,9 +34,13 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Quality Assurance',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Framework :: Buildout',
+        'Framework :: Zope :: 2',
+        'Framework :: Zope :: 3',
+        'Framework :: Zope :: 4',
         'Framework :: Zope2',
         'Framework :: Zope3',
-        'Framework :: Buildout',
     ],
     keywords='version, buildout, packages, upgrade, zope, ztk',
     author='Zope Foundation and Contributors',
