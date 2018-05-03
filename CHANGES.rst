@@ -7,6 +7,10 @@ Changelog
 - Fix compatibility with setuptools 39 by using an API introduced
   in setuptools 8.
 
+- Add support for Python 3.5, 3.6 and PyPy3.
+
+- Drop support for Python 2.6 and 3.3.
+
 - Standardize namespace __init__
 
 
