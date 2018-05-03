@@ -5,14 +5,15 @@ Changelog
 ----------------
 
 - Fix compatibility with setuptools 39 by using an API introduced
-  in setuptools 8.
+  in setuptools 8. (`GH #8`_)
 
 - Add support for Python 3.5, 3.6 and PyPy3.
 
 - Drop support for Python 2.6 and 3.3.
 
-- Standardize namespace __init__
+- Standardize namespace ``__init__``.
 
+.. _GH #8 : https://github.com/zopefoundation/z3c.checkversions/issues/8
 
 0.5 (2014-09-15)
 ----------------
