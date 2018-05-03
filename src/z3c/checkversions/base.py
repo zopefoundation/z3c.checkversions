@@ -100,7 +100,6 @@ class Checker(object):
                     #only skip non-final releases if the current release is a final one
                     continue
                 # trunk the version tuple to the first `level` elements
-                # (and remove *final and pad both to the level length)
                 trunked_current = parsed_version.base_version.split('.')[:level]
                 trunked_candidate = dist.parsed_version.base_version.split('.')[:level]
                 while len(trunked_candidate) < level:
