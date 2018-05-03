@@ -1,8 +1,15 @@
 Changelog
 =========
 
-0.5.1 (unreleased)
-------------------
+1.0 (unreleased)
+----------------
+
+- Fix compatibility with setuptools 39 by using an API introduced
+  in setuptools 8.
+
+- Add support for Python 3.5, 3.6 and PyPy3.
+
+- Drop support for Python 2.6 and 3.3.
 
 - Standardize namespace __init__
 

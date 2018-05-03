@@ -16,14 +16,10 @@ from pkg_resources import parse_version, Requirement
 from setuptools import package_index
 
 
-_final_parts = '*final-', '*final'
 def _final_version(parsed_version):
     """Function copied from zc.buildout.easy_install._final_version
     """
-    for part in parsed_version:
-        if (part[:1] == '*') and (part not in _final_parts):
-            return False
-    return True
+    return not parsed_version.is_prerelease
 
 
 class Checker(object):
@@ -104,11 +100,8 @@ class Checker(object):
                     #only skip non-final releases if the current release is a final one
                     continue
                 # trunk the version tuple to the first `level` elements
-                # (and remove *final and pad both to the level length)
-                trunked_current = [x for x in parsed_version[:level]
-                                   if not x.startswith('*')]
-                trunked_candidate = [x for x in dist.parsed_version[:level]
-                                     if not x.startswith('*')]
+                trunked_current = parsed_version.base_version.split('.')[:level]
+                trunked_candidate = dist.parsed_version.base_version.split('.')[:level]
                 while len(trunked_candidate) < level:
                     trunked_candidate.append('00000000')
                 while len(trunked_current) < level:
