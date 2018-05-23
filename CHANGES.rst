@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0 (unreleased)
+1.0 (2018-05-23)
 ----------------
 
 - Fix compatibility with setuptools 39 by using an API introduced
