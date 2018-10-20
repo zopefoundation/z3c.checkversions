@@ -6,6 +6,8 @@ Changelog
 
 - Add support for Python 3.7.
 
+- Drop support for `python setup.py test`.
+
 
 1.0 (2018-05-23)
 ----------------

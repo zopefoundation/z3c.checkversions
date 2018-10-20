@@ -59,8 +59,6 @@ setup(
     extras_require={
         'buildout': ['zc.buildout'],
     },
-    tests_require=['zc.buildout'],
-    test_suite='z3c.checkversions.test.test_suite',
     entry_points="""
     [console_scripts]
     checkversions = z3c.checkversions.main:main

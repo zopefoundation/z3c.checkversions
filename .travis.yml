@@ -13,8 +13,13 @@ matrix:
           dist: xenial
           sudo: true
 install:
-    - pip install tox-travis
+    - pip install -U pip setuptools
+    - pip install -U coverage coveralls
+    - pip install -U -e .[test]
 script:
-    - tox
+    - coverage run -m zope.testrunner --test-path=src
+after_success:
+    - coveralls
 notifications:
     email: false
+cache: pip
