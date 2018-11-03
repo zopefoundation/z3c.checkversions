@@ -29,6 +29,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Natural Language :: English',
@@ -36,16 +37,15 @@ setup(
         'Topic :: Software Development :: Quality Assurance',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Framework :: Buildout',
+        'Framework :: Zope',
         'Framework :: Zope :: 2',
         'Framework :: Zope :: 3',
         'Framework :: Zope :: 4',
-        'Framework :: Zope2',
-        'Framework :: Zope3',
     ],
     keywords='version, buildout, packages, upgrade, zope, ztk',
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.org',
-    url='http://pypi.python.org/pypi/z3c.checkversions',
+    url='https://github.com/zopefoundation/z3c.checkversions',
     license='ZPL 2.1',
     packages=find_packages('src'),
     package_dir={'': 'src'},
@@ -58,8 +58,6 @@ setup(
     extras_require={
         'buildout': ['zc.buildout'],
     },
-    tests_require=['zc.buildout'],
-    test_suite='z3c.checkversions.test.test_suite',
     entry_points="""
     [console_scripts]
     checkversions = z3c.checkversions.main:main

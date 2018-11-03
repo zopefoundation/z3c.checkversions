@@ -123,4 +123,6 @@ Run tests
 
 Uncompress the archive, then run::
 
-    $ python setup.py test
+    $ virtualenv .
+    $ bin/pip install tox
+    $ tox

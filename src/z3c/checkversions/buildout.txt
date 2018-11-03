@@ -13,7 +13,7 @@ file:///.../testindex
 We create a buildout with a [versions] section and a custom index:
 
 >>> import os
->>> from z3c.checkversions.test import write_temp_file
+>>> from z3c.checkversions.tests import write_temp_file
 >>> buildout_path = write_temp_file("""
 ... [buildout]
 ... index = %s
@@ -57,7 +57,7 @@ zope.interface=3.6.2
 
 The verbose mode gives the current and previous versions.
 This is useful to find out which packages in your buildout can be updated by
-using grep (``bin/checkversions -v | grep was``) 
+using grep (``bin/checkversions -v | grep was``)
 
 >>> checker = buildout.Checker(filename=buildout_path, verbose=True)
 >>> checker.check(level=2)
@@ -88,7 +88,7 @@ We can provide a blacklist file, containing versions to not suggest.
 This file may come from a buildbot remembering failures.
 
 >>> blacklist_path = write_temp_file("""
-... zope.component =3.9.4  
+... zope.component =3.9.4
 ... zope.component = 3.9.3""")
 
 >>> checker = buildout.Checker(filename=buildout_path,
@@ -128,8 +128,11 @@ We are using it directly here:
 ...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
 
 # the "usage" attribute of optparse is inconsistent between python versions
+
 >>> p.stdout.read().lower().startswith(b'usage: ')
 True
+>>> p.wait()
+0
 
 
 explicitly unpinned versions
