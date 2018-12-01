@@ -17,6 +17,7 @@ import distutils.log
 import os
 import tempfile
 
+
 def write_temp_file(content):
     fd, path = tempfile.mkstemp(prefix='test-z3c.checkversions-')
     f = os.fdopen(fd, 'w')
@@ -24,14 +25,17 @@ def write_temp_file(content):
     f.close()
     return path
 
+
 def setUp(test):
     test._old_log_level = distutils.log.set_threshold(distutils.log.ERROR)
+
 
 def tearDown(test):
     distutils.log.set_threshold(test._old_log_level)
 
+
 def test_suite():
-    optionflags = ELLIPSIS|NORMALIZE_WHITESPACE
+    optionflags = ELLIPSIS | NORMALIZE_WHITESPACE
     suite = DocFileSuite('README.txt', 'buildout.txt', 'installed.txt',
                          setUp=setUp, tearDown=tearDown,
                          optionflags=optionflags)

@@ -18,7 +18,8 @@ level 0 gets the highest version (X.y.z),
 level 1 gets the highest intermediate version (x.Y.z),
 level 2 gets the highest minor version (x.y.Z).
 
-Using level 2, you can automatically retrieve all bugfix versions of a buildout.
+Using level 2, you can automatically retrieve all bugfix versions of a
+buildout.
 
 If you provide a blacklist file with bad versions, these versions won't be
 suggested.
@@ -29,9 +30,11 @@ from __future__ import absolute_import
 from optparse import OptionParser
 import os
 
-def main():
 
-    usage = u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [-1] [buildout_file]"
+def main():
+    usage = (
+        u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [-1]"
+        u" [buildout_file]")
     parser = OptionParser(description=__doc__, usage=usage)
 
     parser.add_option('-l', '--level',
@@ -66,7 +69,8 @@ def main():
         parser.error("You must specify only one argument")
 
     if options.blacklist != "" and not os.path.exists(options.blacklist):
-        parser.error('The blacklist file "%s" does not exist!' % options.blacklist)
+        parser.error(
+          'The blacklist file "%s" does not exist!' % options.blacklist)
 
     buildoutcfg = False
     if len(args) == 1:
@@ -94,4 +98,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

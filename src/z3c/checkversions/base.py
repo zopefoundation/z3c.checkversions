@@ -17,8 +17,7 @@ from setuptools import package_index
 
 
 def _final_version(parsed_version):
-    """Function copied from zc.buildout.easy_install._final_version
-    """
+    """Function copied from zc.buildout.easy_install._final_version."""
     return not parsed_version.is_prerelease
 
 
@@ -33,7 +32,9 @@ class Checker(object):
     blacklist: filename of the blacklist
     incremental: suggest only one package upgrade
     """
+
     __custom_url = False
+
     def __init__(self,
                  index_url=None,
                  verbose=False,
@@ -57,8 +58,7 @@ class Checker(object):
             self.__custom_url = True
 
     def _set_index_url(self, url):
-        """set the index URL
-        """
+        """Set the index URL."""
         if url is not None:
             self.pi.index_url = url
         if not self.pi.index_url.endswith('/'):
@@ -66,6 +66,7 @@ class Checker(object):
 
     def check(self, level=0):
         """Search new versions in a version list
+
         versions must be a dict {'name': 'version'}
 
         The new version is limited to the given level:
@@ -96,12 +97,16 @@ class Checker(object):
                     continue
                 if (dist.project_name, dist.version) in self.blacklist:
                     continue
-                if _final_version(parsed_version) and not _final_version(dist.parsed_version):
-                    #only skip non-final releases if the current release is a final one
+                if (_final_version(parsed_version)
+                        and not _final_version(dist.parsed_version)):
+                    # only skip non-final releases if the current release is
+                    # a final one
                     continue
                 # trunk the version tuple to the first `level` elements
-                trunked_current = parsed_version.base_version.split('.')[:level]
-                trunked_candidate = dist.parsed_version.base_version.split('.')[:level]
+                trunked_current = (
+                    parsed_version.base_version.split('.')[:level])
+                trunked_candidate = (
+                    dist.parsed_version.base_version.split('.')[:level])
                 while len(trunked_candidate) < level:
                     trunked_candidate.append('00000000')
                 while len(trunked_current) < level:
@@ -113,19 +118,19 @@ class Checker(object):
                 break
 
             if new_dist and new_dist.parsed_version > parsed_version:
-                if self.incremental == True:
+                if self.incremental is True:
                     self.incremental = 'stop'
                 if self.verbose:
-                    print("%s=%s # was: %s" % (name, new_dist.version, version))
+                    print("%s=%s # was: %s" % (
+                        name, new_dist.version, version))
                 else:
                     print("%s=%s" % (name, new_dist.version))
             elif self.verbose:
                 print("%s=%s" % (name, version))
 
-
     def get_versions(self):
         """Get a dict {'name': 'version', ...} with package versions to check.
+
         This should be implemented by derived classes
         """
         raise NotImplementedError
-

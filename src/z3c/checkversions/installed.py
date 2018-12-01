@@ -15,6 +15,7 @@
 import pkg_resources
 from z3c.checkversions import base
 
+
 class Checker(base.Checker):
     """Checker class for installed packages
     """
@@ -23,5 +24,3 @@ class Checker(base.Checker):
         versions = dict([(d.key, d.version) for d in working_set])
         print("# Checking your installed distributions")
         return versions
-
-
