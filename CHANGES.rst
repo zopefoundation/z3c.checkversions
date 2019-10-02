@@ -4,7 +4,9 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add support for Python 3.8.
+
+- Drop support for Python 3.4.
 
 
 1.1 (2018-11-03)
