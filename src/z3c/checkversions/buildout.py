@@ -19,7 +19,12 @@ except ImportError:
         "zc.buildout is not installed! \n"
         "If you're in a buildout environment,\n"
         "enable the buildout extra requirement like this:\n"
-        "eggs = z3c.checkversions [buildout]")
+        "eggs = z3c.checkversions [buildout]\n"
+        "If you installed z3c.checkversions via pip,\n"
+        "please first uninstall this package,\n"
+        "and then re-install it like this:\n"
+        "pip install z3c.checkversions[buildout]\n"
+        "or install zc.buildout separately.")
 
 from z3c.checkversions import base
 

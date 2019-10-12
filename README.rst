@@ -37,6 +37,11 @@ or in a buildout::
 Note that buildout support is optional and must be enabled with [buildout] so
 that zc.buildout is installed as well.
 
+If you need buildout support while installing this package via pip
+you have to install it like this:
+
+    pip install z3c.checkversions[buildout]
+
 Usage
 =====
 
