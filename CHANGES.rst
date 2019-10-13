@@ -8,6 +8,10 @@ Changelog
 
 - Drop support for Python 3.4.
 
+- Improve error message in case zc.buildout is not installed.
+
+- Improve installation instruction.
+
 
 1.1 (2018-11-03)
 ----------------
