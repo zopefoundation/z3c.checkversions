@@ -133,6 +133,9 @@ We are using it directly here:
 True
 >>> p.wait()
 0
+>>> p.stdin.close()
+>>> p.stdout.close()
+>>> p.stderr.close()
 
 
 explicitly unpinned versions
