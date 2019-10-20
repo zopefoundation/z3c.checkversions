@@ -122,20 +122,15 @@ the 'main' module is exposed through a console_script entry point.
 We are using it directly here:
 
 >>> import sys
+>>> import subprocess
 >>> from z3c.checkversions import main
->>> from subprocess import Popen, PIPE
->>> p = Popen([sys.executable, main.__file__, '-h'],
-...           stdout=PIPE, stdin=PIPE, stderr=PIPE)
+>>> output = subprocess.check_output([sys.executable, main.__file__, '-h'],
+...                                  stderr=subprocess.STDOUT)
 
 # the "usage" attribute of optparse is inconsistent between python versions
 
->>> p.stdout.read().lower().startswith(b'usage: ')
+>>> output.lower().startswith(b'usage: ')
 True
->>> p.wait()
-0
->>> p.stdin.close()
->>> p.stdout.close()
->>> p.stderr.close()
 
 
 explicitly unpinned versions
