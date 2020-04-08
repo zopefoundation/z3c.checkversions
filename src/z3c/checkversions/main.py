@@ -82,17 +82,15 @@ def main():
 
     if buildoutcfg:
         from . import buildout
-        checker = buildout.Checker(filename=buildoutcfg,
-                                   blacklist=options.blacklist,
-                                   incremental=options.incremental,
-                                   verbose=options.verbose,
-                                   **kw)
+        factory = buildout.Checker
     else:
         from . import installed
-        checker = installed.Checker(blacklist=options.blacklist,
-                                    incremental=options.incremental,
-                                    verbose=options.verbose)
+        factory = installed.Checker
 
+    checker = factory(blacklist=options.blacklist,
+                      incremental=options.incremental,
+                      verbose=options.verbose,
+                      **kw)
     checker.check(level=options.level)
 
 

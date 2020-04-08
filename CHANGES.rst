@@ -12,6 +12,8 @@ Changelog
 
 - Improve installation instruction.
 
+- Pass the index url to both the 'installed' and 'buildout' checkers.
+
 
 1.1 (2018-11-03)
 ----------------
