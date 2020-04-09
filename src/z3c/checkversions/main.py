@@ -77,11 +77,11 @@ def main():
         kw['index_url'] = options.index
 
     if len(args) == 1:
-        from . import buildout
+        from z3c.checkversions import buildout
         kw['filename'] = args[0]
         factory = buildout.Checker
     else:
-        from . import installed
+        from z3c.checkversions import installed
         factory = installed.Checker
 
     checker = factory(blacklist=options.blacklist,
