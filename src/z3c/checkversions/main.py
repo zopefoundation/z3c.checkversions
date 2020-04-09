@@ -72,16 +72,13 @@ def main():
         parser.error(
           'The blacklist file "%s" does not exist!' % options.blacklist)
 
-    buildoutcfg = False
-    if len(args) == 1:
-        buildoutcfg = args[0]
-
     kw = {}
     if options.index is not None:
         kw['index_url'] = options.index
 
-    if buildoutcfg:
+    if len(args) == 1:
         from . import buildout
+        kw['filename'] = args[0]
         factory = buildout.Checker
     else:
         from . import installed
