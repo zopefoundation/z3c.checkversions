@@ -32,6 +32,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python :: Implementation :: PyPy3',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Quality Assurance',
@@ -55,6 +56,14 @@ setup(
     install_requires=[
         'setuptools >= 8',
     ],
+    python_requires=', '.join([
+        '>=2.7',
+        '!=3.0.*',
+        '!=3.1.*',
+        '!=3.2.*',
+        '!=3.3.*',
+        '!=3.4.*',
+    ]),
     extras_require={
         'buildout': ['zc.buildout'],
     },
