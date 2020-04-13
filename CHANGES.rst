@@ -4,9 +4,7 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Add support for Python 3.8.
-
-- Drop support for Python 3.4.
+- Add support for Python 3.8, drop support for Python 3.4.
 
 - Improve error message in case zc.buildout is not installed.
 
