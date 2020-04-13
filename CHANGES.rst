@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2020-04-13)
 ----------------
 
 - Add support for Python 3.8, drop support for Python 3.4.
