@@ -72,27 +72,22 @@ def main():
         parser.error(
           'The blacklist file "%s" does not exist!' % options.blacklist)
 
-    buildoutcfg = False
-    if len(args) == 1:
-        buildoutcfg = args[0]
-
     kw = {}
     if options.index is not None:
         kw['index_url'] = options.index
 
-    if buildoutcfg:
-        from . import buildout
-        checker = buildout.Checker(filename=buildoutcfg,
-                                   blacklist=options.blacklist,
-                                   incremental=options.incremental,
-                                   verbose=options.verbose,
-                                   **kw)
+    if len(args) == 1:
+        from z3c.checkversions import buildout
+        kw['filename'] = args[0]
+        factory = buildout.Checker
     else:
-        from . import installed
-        checker = installed.Checker(blacklist=options.blacklist,
-                                    incremental=options.incremental,
-                                    verbose=options.verbose)
+        from z3c.checkversions import installed
+        factory = installed.Checker
 
+    checker = factory(blacklist=options.blacklist,
+                      incremental=options.incremental,
+                      verbose=options.verbose,
+                      **kw)
     checker.check(level=options.level)
 
 

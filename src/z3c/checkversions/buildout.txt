@@ -132,6 +132,31 @@ We are using it directly here:
 >>> output.lower().startswith(b'usage: ')
 True
 
+The default behavior is to inspect the installed versions
+
+>>> output = subprocess.check_output([sys.executable, main.__file__],
+...                                  stderr=subprocess.STDOUT)
+
+>>> '# Checking your installed distributions' in output.decode('ascii')
+True
+
+If you pass in a buildout config file, this will be used.
+
+>>> buildout_path = write_temp_file("""
+... [buildout]
+... index = %s
+... versions = versions
+... [versions]
+... zope.interface = 3.4.1
+... zope.component = 3.0.3
+... """ % testindex)
+>>> output = subprocess.check_output(
+...     [sys.executable, main.__file__, buildout_path],
+...     stderr=subprocess.STDOUT)
+>>> '# Checking buildout file' in output.decode('ascii')
+True
+>>> os.remove(buildout_path)
+
 
 explicitly unpinned versions
 ----------------------------
