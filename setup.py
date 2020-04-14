@@ -16,7 +16,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='z3c.checkversions',
-    version='1.2.dev0',
+    version='1.3.dev0',
     description="Find newer package versions on PyPI",
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
@@ -32,7 +32,6 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
-        'Programming Language :: Python :: Implementation :: PyPy3',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Quality Assurance',
