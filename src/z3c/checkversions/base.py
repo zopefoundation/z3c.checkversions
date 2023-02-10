@@ -12,7 +12,9 @@
 #
 ##############################################################################
 
-from pkg_resources import parse_version, Requirement
+from pkg_resources import Requirement
+from pkg_resources import parse_version
+
 from setuptools import package_index
 
 

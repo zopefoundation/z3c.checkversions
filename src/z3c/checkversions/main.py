@@ -27,8 +27,8 @@ suggested.
 
 from __future__ import absolute_import
 
-from optparse import OptionParser
 import os
+from optparse import OptionParser
 
 
 def main():

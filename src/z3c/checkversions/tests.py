@@ -12,10 +12,12 @@
 #
 ##############################################################################
 
-from doctest import DocFileSuite, ELLIPSIS, NORMALIZE_WHITESPACE
 import distutils.log
 import os
 import tempfile
+from doctest import ELLIPSIS
+from doctest import NORMALIZE_WHITESPACE
+from doctest import DocFileSuite
 
 
 def write_temp_file(content):

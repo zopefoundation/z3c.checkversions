@@ -13,6 +13,7 @@
 ##############################################################################
 
 import pkg_resources
+
 from z3c.checkversions import base
 
 
