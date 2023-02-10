@@ -14,10 +14,13 @@
 
 import distutils.log
 import os
+import re
 import tempfile
 from doctest import ELLIPSIS
 from doctest import NORMALIZE_WHITESPACE
 from doctest import DocFileSuite
+
+from zope.testing import renormalizing
 
 
 def write_temp_file(content):
@@ -36,9 +39,17 @@ def tearDown(test):
     distutils.log.set_threshold(test._old_log_level)
 
 
+checker = renormalizing.RENormalizing([
+    (re.compile(r'root: Reading file:.*'), ''),
+    (re.compile(r"root: Couldn't find index page for '.*"), ''),
+    (re.compile(
+        r'root: Scanning index of all packages (this may take a while)'), '')
+])
+
+
 def test_suite():
     optionflags = ELLIPSIS | NORMALIZE_WHITESPACE
     suite = DocFileSuite('README.txt', 'buildout.txt', 'installed.txt',
                          setUp=setUp, tearDown=tearDown,
-                         optionflags=optionflags)
+                         optionflags=optionflags, checker=checker)
     return suite

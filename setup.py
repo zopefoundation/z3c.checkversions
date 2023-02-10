@@ -40,13 +40,12 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Framework :: Buildout',
         'Framework :: Zope',
-        'Framework :: Zope :: 2',
         'Framework :: Zope :: 3',
-        'Framework :: Zope :: 4',
+        'Framework :: Zope :: 5',
     ],
     keywords='version, buildout, packages, upgrade, zope, ztk',
     author='Zope Foundation and Contributors',
-    author_email='zope-dev@zope.org',
+    author_email='zope-dev@zope.dev',
     url='https://github.com/zopefoundation/z3c.checkversions',
     license='ZPL 2.1',
     packages=find_packages('src'),
@@ -57,11 +56,10 @@ setup(
     install_requires=[
         'setuptools >= 8',
     ],
-    python_requires=','.join([
-        '>=3.7',
-    ]),
+    python_requires='>=3.7',
     extras_require={
         'buildout': ['zc.buildout'],
+        'test': ['zope.testing'],
     },
     entry_points="""
     [console_scripts]

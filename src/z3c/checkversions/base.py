@@ -23,7 +23,7 @@ def _final_version(parsed_version):
     return not parsed_version.is_prerelease
 
 
-class Checker(object):
+class Checker:
     """Base class for version checkers
 
     attributes:
@@ -47,11 +47,11 @@ class Checker(object):
         if blacklist:
             # create a set of tuples with bad versions
             with open(blacklist) as b:
-                self.blacklist = set([
+                self.blacklist = {
                     tuple(map(lambda x: x.strip(), line.split('=')))
                     for line in b.readlines()
                     if '=' in line
-                ])
+                }
         else:
             self.blacklist = set()
         self.pi = package_index.PackageIndex(search_path=())
@@ -84,7 +84,7 @@ class Checker(object):
         for name, version in sorted(versions.items()):
             if self.incremental == 'stop':
                 # skip subsequent scans
-                print("%s=%s" % (name, version))
+                print("{}={}".format(name, version))
                 continue
             parsed_version = parse_version(version)
             req = Requirement.parse(name)
@@ -123,12 +123,12 @@ class Checker(object):
                 if self.incremental is True:
                     self.incremental = 'stop'
                 if self.verbose:
-                    print("%s=%s # was: %s" % (
+                    print("{}={} # was: {}".format(
                         name, new_dist.version, version))
                 else:
-                    print("%s=%s" % (name, new_dist.version))
+                    print("{}={}".format(name, new_dist.version))
             elif self.verbose:
-                print("%s=%s" % (name, version))
+                print("{}={}".format(name, version))
 
     def get_versions(self):
         """Get a dict {'name': 'version', ...} with package versions to check.
