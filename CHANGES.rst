@@ -8,6 +8,8 @@ Changelog
 
 - Drop support for Python 2.7, 3.5, 3.6.
 
+- Pin ``setuptools < 66`` as newer versions are no longer compatible.
+
 
 1.2 (2020-04-13)
 ----------------
