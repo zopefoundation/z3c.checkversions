@@ -12,11 +12,13 @@
 #
 ##############################################################################
 
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 
 setup(
     name='z3c.checkversions',
-    version='1.3.dev0',
+    version='2.0.dev0',
     description="Find newer package versions on PyPI",
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
@@ -25,12 +27,11 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Zope Public License',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Natural Language :: English',
@@ -39,13 +40,12 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Framework :: Buildout',
         'Framework :: Zope',
-        'Framework :: Zope :: 2',
         'Framework :: Zope :: 3',
-        'Framework :: Zope :: 4',
+        'Framework :: Zope :: 5',
     ],
     keywords='version, buildout, packages, upgrade, zope, ztk',
     author='Zope Foundation and Contributors',
-    author_email='zope-dev@zope.org',
+    author_email='zope-dev@zope.dev',
     url='https://github.com/zopefoundation/z3c.checkversions',
     license='ZPL 2.1',
     packages=find_packages('src'),
@@ -54,18 +54,12 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'setuptools >= 8',
+        'setuptools >= 8, < 66',
     ],
-    python_requires=', '.join([
-        '>=2.7',
-        '!=3.0.*',
-        '!=3.1.*',
-        '!=3.2.*',
-        '!=3.3.*',
-        '!=3.4.*',
-    ]),
+    python_requires='>=3.7',
     extras_require={
         'buildout': ['zc.buildout'],
+        'test': ['zope.testing'],
     },
     entry_points="""
     [console_scripts]

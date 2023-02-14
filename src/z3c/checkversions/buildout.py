@@ -31,7 +31,7 @@ class Checker(base.Checker):
     """
     def __init__(self, *args, **kw):
         self.filename = kw.pop('filename')
-        super(Checker, self).__init__(*args, **kw)
+        super().__init__(*args, **kw)
 
     def get_versions(self):
         print("# Checking buildout file %s" % self.filename)

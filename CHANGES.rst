@@ -1,10 +1,14 @@
 Changelog
 =========
 
-1.3 (unreleased)
+2.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add support for Python 3.10, 3.11.
+
+- Drop support for Python 2.7, 3.5, 3.6.
+
+- Pin ``setuptools < 66`` as newer versions are no longer compatible.
 
 
 1.2 (2020-04-13)
@@ -40,6 +44,7 @@ Changelog
 - Standardize namespace ``__init__``.
 
 .. _GH #8 : https://github.com/zopefoundation/z3c.checkversions/issues/8
+
 
 0.5 (2014-09-15)
 ----------------

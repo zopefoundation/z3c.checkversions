@@ -25,44 +25,43 @@ If you provide a blacklist file with bad versions, these versions won't be
 suggested.
 """
 
-from __future__ import absolute_import
 
-from optparse import OptionParser
 import os
+from optparse import OptionParser
 
 
 def main():
     usage = (
-        u"Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [-1]"
-        u" [buildout_file]")
+        "Usage: %prog [-v] [-l LEVEL] [-i INDEX] [-b BLACKLIST] [-1]"
+        " [buildout_file]")
     parser = OptionParser(description=__doc__, usage=usage)
 
     parser.add_option('-l', '--level',
                       type='int',
                       dest='level',
                       default=0,
-                      help=u"Version level to check")
+                      help="Version level to check")
 
     parser.add_option('-i', '--index',
                       dest='index',
-                      help=u"Provide and alternative package index URL")
+                      help="Provide and alternative package index URL")
 
     parser.add_option('-b', '--blacklist',
                       dest='blacklist',
                       default="",
-                      help=u"Provide a blacklist file with bad versions")
+                      help="Provide a blacklist file with bad versions")
 
     parser.add_option('-1', '--incremental',
                       dest='incremental',
                       action='store_true',
                       default=False,
-                      help=u"Suggest only one upgrade. Skip others.")
+                      help="Suggest only one upgrade. Skip others.")
 
     parser.add_option('-v', '--verbose',
                       dest='verbose',
                       action='store_true',
                       default=False,
-                      help=u"Verbose mode (prints old versions too)")
+                      help="Verbose mode (prints old versions too)")
     options, args = parser.parse_args()
 
     if len(args) > 1:
