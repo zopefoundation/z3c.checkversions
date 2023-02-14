@@ -54,7 +54,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'setuptools >= 8, < 67',
+        'setuptools >= 8, < 66',
     ],
     python_requires='>=3.7',
     extras_require={
