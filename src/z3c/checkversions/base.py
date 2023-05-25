@@ -86,7 +86,17 @@ class Checker:
                 # skip subsequent scans
                 print("{}={}".format(name, version))
                 continue
-            parsed_version = parse_version(version)
+
+            try:
+                parsed_version = parse_version(version)
+            except ValueError:
+                # This could be a requirements specification instead
+                # of a straight version number
+                req = Requirement(f'{name}{version}')
+                for spec in req.specifier:
+                    parsed_version = parse_version(spec.version)
+                    break  # Just use the first one
+
             req = Requirement.parse(name)
             self.pi.find_packages(req)
             new_dist = None

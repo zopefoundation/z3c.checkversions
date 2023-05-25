@@ -4,7 +4,8 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix parsing of versions that are really requirements specifications.
+  (`#24 <https://github.com/zopefoundation/z3c.checkversions/issues/24>`_)
 
 
 2.0 (2023-02-14)
