@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1 (unreleased)
+2.1 (2023-02-06)
 ----------------
 
 - Fix parsing of versions that are really requirements specifications.
