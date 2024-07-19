@@ -14,8 +14,8 @@
 
 try:
     from zc.buildout.buildout import Buildout
-except ImportError:
-    raise ImportError(
+except ModuleNotFoundError:
+    raise ModuleNotFoundError(
         "zc.buildout is not installed! \n"
         "If you're in a buildout environment,\n"
         "enable the buildout extra requirement like this:\n"
@@ -29,6 +29,7 @@ from z3c.checkversions import base
 class Checker(base.Checker):
     """checker class for a buildout
     """
+
     def __init__(self, *args, **kw):
         self.filename = kw.pop('filename')
         super().__init__(*args, **kw)

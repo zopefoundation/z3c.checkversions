@@ -27,11 +27,11 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Zope Public License',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Natural Language :: English',
@@ -56,7 +56,7 @@ setup(
     install_requires=[
         'setuptools >= 8',
     ],
-    python_requires='>=3.7',
+    python_requires='>=3.8',
     extras_require={
         'buildout': ['zc.buildout'],
         'test': ['zope.testing'],

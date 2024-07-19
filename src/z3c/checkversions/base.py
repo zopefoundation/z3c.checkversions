@@ -84,7 +84,7 @@ class Checker:
         for name, version in sorted(versions.items()):
             if self.incremental == 'stop':
                 # skip subsequent scans
-                print("{}={}".format(name, version))
+                print(f"{name}={version}")
                 continue
 
             try:
@@ -136,9 +136,9 @@ class Checker:
                     print("{}={} # was: {}".format(
                         name, new_dist.version, version))
                 else:
-                    print("{}={}".format(name, new_dist.version))
+                    print(f"{name}={new_dist.version}")
             elif self.verbose:
-                print("{}={}".format(name, version))
+                print(f"{name}={version}")
 
     def get_versions(self):
         """Get a dict {'name': 'version', ...} with package versions to check.
