@@ -69,7 +69,7 @@ def main():
 
     if options.blacklist != "" and not os.path.exists(options.blacklist):
         parser.error(
-          'The blacklist file "%s" does not exist!' % options.blacklist)
+            'The blacklist file "%s" does not exist!' % options.blacklist)
 
     kw = {}
     if options.index is not None:
