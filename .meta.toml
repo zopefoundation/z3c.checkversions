@@ -2,7 +2,7 @@
 # https://github.com/zopefoundation/meta/tree/master/config/pure-python
 [meta]
 template = "pure-python"
-commit-id = "6e808865"
+commit-id = "e1995c20"
 
 [python]
 with-windows = false
@@ -26,5 +26,4 @@ fail-under = 78.5
 additional-rules = [
     "recursive-include src *.html",
     "recursive-include src *.txt",
-    "include .coveragerc",
     ]
