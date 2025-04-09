@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2 (unreleased)
+2.2 (2025-04-09)
 ----------------
 
 - Add support for Python 3.12, 3.13.
