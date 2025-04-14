@@ -12,13 +12,12 @@
 #
 ##############################################################################
 
-from setuptools import find_packages
 from setuptools import setup
 
 
 setup(
     name='z3c.checkversions',
-    version='2.3.dev0',
+    version='3.0.dev0',
     description="Find newer package versions on PyPI",
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
@@ -48,9 +47,6 @@ setup(
     author_email='zope-dev@zope.dev',
     url='https://github.com/zopefoundation/z3c.checkversions',
     license='ZPL-2.1',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    namespace_packages=['z3c'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
