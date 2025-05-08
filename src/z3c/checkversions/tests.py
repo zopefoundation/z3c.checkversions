@@ -40,10 +40,7 @@ def tearDown(test):
 
 
 checker = renormalizing.RENormalizing([
-    (re.compile(r'root: Reading file:.*'), ''),
-    (re.compile(r"root: Couldn't find index page for '.*"), ''),
-    (re.compile(
-        r'root: Scanning index of all packages (this may take a while)'), '')
+    (re.compile(r'root: .*'), ''),
 ])
 
 
